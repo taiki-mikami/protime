@@ -5,8 +5,8 @@
 
 <table class="table">
     <tr><td>累計学習時間：</td></tr>
-    <tr><td><a href="#">ホーム</a></td></tr>
-    <tr><td><a href="#">ユーザ詳細</a></td></tr>
+    <tr><td><a href="/">ホーム</a></td></tr>
+    <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
     <tr><td><a href="#">フォロー一覧</a></td></tr>
     <tr><td><a href="#">フォロワー一覧</a></td></tr>
     <tr><td><%= link_to 'ログアウト', logout_path, method: :delete %></td></tr>
@@ -14,5 +14,5 @@
 </table>
 
 <div class="text-center">
-    <a href="#" class="btn btn-primary btn-block rounded-pill">記録する</a>
+    <a href="/study_records/new" class="btn btn-primary btn-block rounded-pill">記録する</a>
 </div>

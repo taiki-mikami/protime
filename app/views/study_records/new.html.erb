@@ -1,0 +1,26 @@
+<header class="bg-dark">
+    <h5 class="text-white" style="padding: 20px">学習記録を入力</h5>
+</header>
+
+<%= form_with(model: @study_record, local: true) do |f| %>
+
+    <div class="form-group col-sm-6 offset-sm-3">
+        <%= f.label :language,  '学習言語' %>
+        <%= f.text_field :language, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group col-sm-6 offset-sm-3">
+        <%= f.label :studytime, '学習時間' %>
+        <%= f.text_field :studytime, class: 'form-control' %>
+    </div>
+    
+    <div class="form-group col-sm-6 offset-sm-3">
+        <%= f.label :content, 'コメント' %>
+        <%= f.text_area :content, class: 'form-control' %>
+    </div>
+    
+    <div class="col-sm-6 offset-sm-3">
+        <%= f.submit '投稿する！', class: 'btn btn-primary btn-block' %>
+    </div>
+
+<% end %>
