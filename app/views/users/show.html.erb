@@ -1,26 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8 mt-5">
-            <div class="container">
-                <div class="row mb-3">
-                    <div class="col-sm-2">
-                        <img class="rounded", src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
-                    </div>
-                    <div class="col-sm-10">
-                        <div class="mb-3">
-                        <%= @user.name %>
-                        </div>
-                        <p>累計学習時間：</p>
-                        <!-- follow button -->
-                    </div>
+            <img class="rounded", src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
+                <div class="mb-3">
+                    <%= @user.name %>
                 </div>
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="nav-item"><a href="#" class="nav-link">最近の勉強記録</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">フォロー</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">フォロワー</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">いいね！</a></li>
-                </ul>
-            </div>
+                <p>累計学習時間：</p>
+                        <!-- follow button -->
+                    
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">最近の勉強記録</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">フォロー</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">フォロワー</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">いいね！</a></li>
+            </ul>
+            <%= render 'studies', studies: @user.studyrecords %>
         </div>
         
         <div class="col-sm-4">
