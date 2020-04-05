@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def create
+    @study = StudyRecord.all.order(id: :desc).page(params[:page])
     email = params[:session][:email].downcase
     password = params[:session][:password].downcase
     if login(email, password)
