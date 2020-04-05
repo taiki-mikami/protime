@@ -1,6 +1,6 @@
 <div class="text-center mt-5">
     <img class="rounded mb-1" src="<%= gravatar_url(user, { size: 50 }) %>" alt=""><br>
-    <%= current_user.name %>
+    <%= link_to current_user.name, user_path(@current_user) %>
 </div>
 
 <table class="table">

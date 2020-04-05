@@ -2,7 +2,8 @@
 <div class="mb-4" style="display: flex;">
     <div>
         <img class="rounded mr-3", src="<%= gravatar_url(study.user, { size: 75 }) %>" alt=""><br>
-        <div class="text-center mr-3"><%= study.user.name %></div>
+        <div class="text-center mr-3">
+            <%= link_to study.user.name, user_path(study.user) %></div>
     </div>
     <div style="margin: 0px;">
         <div class="mr-3" style='display: inline;'>学習言語：<%= study.language %></div>
