@@ -4,7 +4,7 @@
 </div>
 
 <table class="table">
-    <tr><td>累計学習時間：</td></tr>
+    <tr><td>累計学習時間：<%= render 'users/studytime', user: current_user %></td></tr>
     <tr><td><a href="/">ホーム</a></td></tr>
     <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
     <tr><td><%= link_to 'フォロー一覧', followings_user_path(user) %></td></tr>

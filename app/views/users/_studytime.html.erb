@@ -1,0 +1,13 @@
+<% sum2 = 0 %>
+<% unless user.studyrecords.empty? %>
+    <% user.studyrecords.each do |studyrecord| %>
+        <% sum1 = studyrecord.studytime %>
+        <% sum2 += sum1 %>
+        <% if studyrecord.id == user.studyrecords.last.id %>
+            <% hour = sum2/60 %>
+                <%= sum2 %>分 (<%= hour %>時間)
+        <% end %>
+    <% end %>
+<% else %>
+    0
+<% end %>
