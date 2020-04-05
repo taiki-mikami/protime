@@ -7,8 +7,8 @@
     <tr><td>累計学習時間：</td></tr>
     <tr><td><a href="/">ホーム</a></td></tr>
     <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
-    <tr><td><a href="#">フォロー一覧</a></td></tr>
-    <tr><td><a href="#">フォロワー一覧</a></td></tr>
+    <tr><td><%= link_to 'フォロー一覧', followings_user_path(user) %></td></tr>
+    <tr><td><%= link_to 'フォロワー一覧', followers_user_path(user) %></td></tr>
     <tr><td><%= link_to 'ログアウト', logout_path, method: :delete %></td></tr>
     <tr><td></td></tr>
 </table>
