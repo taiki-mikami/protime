@@ -19,8 +19,12 @@
         <%= f.text_area :content, class: 'form-control' %>
     </div>
     
-    <div class="col-sm-6 offset-sm-3">
+    <div class="col-sm-6 offset-sm-3 mb-3">
         <%= f.submit '投稿する！', class: 'btn btn-primary btn-block' %>
+    </div>
+    
+    <div class="text-center">
+        <%= link_to 'ホームへ戻る', root_url %>
     </div>
 
 <% end %>
