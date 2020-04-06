@@ -1,13 +1,13 @@
 <% users.each do |user| %>
-    <div class="mt-4" style="display: flex">
-        <div>
-            <ul class="list-unstyled">
-                <li><img class="rounded mr-3", src="<%= gravatar_url(user, { size: 75 }) %>" alt=""></li>
-                <li class="text-center mr-3"><%= user.name %></li>
-            </ul>
-        </div>
-        <div>
-            <%= render 'relationships/follow_button', user: user %>
-        </div>
+<div class="mt-4" style="display: flex">
+    <div>
+        <ul class="list-unstyled">
+            <li><img class="rounded mr-3", src="<%= gravatar_url(user, { size: 75 }) %>" alt=""></li>
+            <li class="text-center mr-3"><%= user.name %></li>
+        </ul>
     </div>
+    <div>
+        <%= render 'relationships/follow_button', user: user %>
+    </div>
+</div>
 <% end %>

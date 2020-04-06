@@ -33,6 +33,11 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
   end
   
+  def goodlists
+    @user = User.find(params[:id])
+    @goodlists = @user.fav_records.page(params[:page])
+  end
+  
   
   private
   

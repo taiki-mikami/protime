@@ -10,6 +10,7 @@
         <div class="mr-3" style='display: inline;'>学習時間：<%= study.studytime %>分</div>
         <div style='display: inline;'>投稿日時：<%= study.created_at %></div><br>
         <div>コメント<br><%= study.content %></div>
+        <%= render 'favorites/like_button', studyrecord: study %>
     </div>
     
 </div>            

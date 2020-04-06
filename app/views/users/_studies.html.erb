@@ -1,16 +1,18 @@
-<div class="mt-4">
-    <% studies.each do |study| %>
-    <li class="media mb-4">
+<% studies.each do |study| %>
+<div class="mt-4" style="display: flex">
+    <div class="mb-4">
         <img class="rounded mr-3", src="<%= gravatar_url(@user, { size: 75 }) %>" alt="">
-        <div class="media-body">
-            <div class="mr-3" style='display: inline;'>学習言語：<%= study.language %></div>
-            <div class="mr-3" style='display: inline;'>学習時間：<%= study.studytime %>分</div>
-            <div style='display: inline;'>投稿日時：<%= study.created_at %></div>
-            <div>コメント</div>
-            <div><%= study.content %></div>
-        </div>
-    </li>
-    <% end %>
+        <div class="mr-3 text-center"><%= study.user.name %></div>
+    </div>
+    <div>
+        <div class="mr-3" style='display: inline;'>学習言語：<%= study.language %></div>
+        <div class="mr-3" style='display: inline;'>学習時間：<%= study.studytime %>分</div>
+        <div style='display: inline;'>投稿日時：<%= study.created_at %></div>
+        <div>コメント</div>
+        <div><%= study.content %></div>
+        <%= render 'favorites/like_button', studyrecord: study %>
+    </div>
 </div>
+<% end %>
 
         

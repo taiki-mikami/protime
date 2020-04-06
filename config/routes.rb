@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   
   resources :study_records, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 end
