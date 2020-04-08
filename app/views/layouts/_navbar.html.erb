@@ -1,18 +1,20 @@
-<div class="text-center mt-5">
-    <img class="rounded mb-1" src="<%= gravatar_url(user, { size: 50 }) %>" alt=""><br>
-    <%= link_to current_user.name, user_path(@current_user) %>
-</div>
+<div style="padding: 10px; background-color: #f0f8ff; border-radius: 30px;">
+    <div class="text-center mt-3">
+        <img class="mb-1" style="border-radius: 100px;" src="<%= gravatar_url(user, { size: 50 }) %>" alt=""><br>
+        <%= link_to current_user.name, user_path(@current_user) %>
+    </div>
 
-<table class="table">
-    <tr><td>累計学習時間：<%= render 'users/studytime', user: current_user %></td></tr>
-    <tr><td><a href="/">ホーム</a></td></tr>
-    <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
-    <tr><td><%= link_to 'フォロー一覧', followings_user_path(user) %></td></tr>
-    <tr><td><%= link_to 'フォロワー一覧', followers_user_path(user) %></td></tr>
-    <tr><td><%= link_to 'ログアウト', logout_path, method: :delete %></td></tr>
-    <tr><td></td></tr>
-</table>
+    <table class="table">
+        <tr><td>累計学習時間：<%= render 'users/studytime', user: current_user %></td></tr>
+        <tr><td><a href="/">ホーム</a></td></tr>
+        <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
+        <tr><td><%= link_to 'フォロー一覧', followings_user_path(user) %></td></tr>
+        <tr><td><%= link_to 'フォロワー一覧', followers_user_path(user) %></td></tr>
+        <tr><td><%= link_to 'ログアウト', logout_path, method: :delete %></td></tr>
+        <tr><td></td></tr>
+    </table>
 
-<div class="text-center">
-    <a href="/study_records/new" class="btn btn-primary btn-block rounded-pill">記録する</a>
+    <div class="text-center mb-3">
+        <a href="/study_records/new" class="btn btn-primary btn-block rounded-pill">記録する！</a>
+    </div>
 </div>

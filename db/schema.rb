@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_06_115410) do
+ActiveRecord::Schema.define(version: 2020_04_08_070838) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "studyrecord_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["studyrecord_id"], name: "index_favorites_on_studyrecord_id"
+    t.bigint "study_record_id"
+    t.index ["study_record_id"], name: "index_favorites_on_study_record_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_115410) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "favorites", "study_records", column: "studyrecord_id"
+  add_foreign_key "favorites", "study_records"
   add_foreign_key "favorites", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"

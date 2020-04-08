@@ -1,13 +1,17 @@
+<div class="bg-dark text-white mb-5" style="padding: 10px;">
+    <h3 class="ml-3"><a href='/' style="color: white; text-decoration: none;"><em>Protime</em></a></h3>
+</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-sm-8 mt-5">
+        <div class="col-sm-8">
             <%= render 'layouts/flash_messages' %>
-            <img class="rounded", src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
+            <img style="border-radius: 100px;", src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
                 <div class="mb-3">
                     <%= @user.name %>
                     <%= render 'relationships/follow_button', user: @user %>
                 </div>
-                <p>累計学習時間：<%= render 'studytime', user: @user %></p>
+                <p><%= @count_followings %>人フォローしています</p>
                     
             <ul class="nav nav-tabs nav-justified">
                 <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link">最近の勉強記録</a></li>
@@ -15,11 +19,20 @@
                 <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link">フォロワー</a></li>
                 <li class="nav-item"><a href="<%= goodlists_user_path(@user) %>" class="nav-link">いいね！</a></li>
             </ul>
-            <%= render 'user', users: @followings %>
+            <% unless @followings.empty? %>
+                <%= render 'user', users: @followings %>
+                <%= paginate @followings %>
+            <% else %>
+                <div class="text-center mt-3">まだフォローしていません</div>
+            <% end %>
         </div>
         
         <div class="col-sm-4">
+            <% if logged_in? %>
             <%= render 'layouts/navbar', user: current_user %>
+            <% else %>
+            <%= render 'layouts/login' %>
+            <% end %>
         </div>
     </div>
 </div>

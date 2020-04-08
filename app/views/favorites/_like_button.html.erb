@@ -1,12 +1,13 @@
+<% if logged_in? %>
 <% if current_user.like?(studyrecord) %>
-    <%= form_with(model: current_user.favorites.find_by(studyrecord_id: studyrecord.id), local: true, method: :delete) do |f| %>
-        <%= hidden_field_tag :studyrecord_id, studyrecord.id %>
-        <%= f.submit 'いいね！解除', class: 'btn btn-danger' %>
+    <%= form_with(model: current_user.favorites.find_by(study_record_id: studyrecord.id), local: true, method: :delete) do |f| %>
+        <%= hidden_field_tag :study_record_id, studyrecord.id %>
+        <%= f.submit 'いいね！解除', class: 'btn btn-sm btn-light rounded-pill' %>
     <% end %>
 <% else %>
-    <%= form_with(model: current_user.favorites.build(studyrecord_id: studyrecord.id), local: true) do |f| %>
-        <%= hidden_field_tag :studyrecord_id, studyrecord.id %>
-        <%= f.submit 'いいね！', class: 'btn btn-primary' %>
+    <%= form_with(model: current_user.favorites.build(study_record_id: studyrecord.id), local: true) do |f| %>
+        <%= hidden_field_tag :study_record_id, studyrecord.id %>
+        <%= f.submit 'いいね！', class: "btn btn-info btn-sm rounded-pill" %>
     <% end %>
 <% end %>
-        
+<% end %>        

@@ -1,7 +1,7 @@
 <% studies.each do |study| %>
-<div class="mb-4" style="display: flex;">
+<div class="mb-4 pb-2" style="display: flex; border-bottom: 1px solid #D3D3D3;">
     <div>
-        <img class="rounded mr-3", src="<%= gravatar_url(study.user, { size: 75 }) %>" alt=""><br>
+        <img class="mr-3" style="border-radius: 100px;", src="<%= gravatar_url(study.user, { size: 60 }) %>" alt=""><br>
         <div class="text-center mr-3">
             <%= link_to study.user.name, user_path(study.user) %></div>
     </div>
@@ -15,3 +15,4 @@
     
 </div>            
 <% end %>
+<%= paginate @study %>

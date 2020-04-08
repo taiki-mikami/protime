@@ -1,8 +1,8 @@
 <% studies.each do |study| %>
-<div class="mt-4" style="display: flex">
+<div class="mt-4 pb-2" style="display: flex; border-bottom: 1px solid #D3D3D3;">
     <div class="mb-4">
-        <img class="rounded mr-3", src="<%= gravatar_url(@user, { size: 75 }) %>" alt="">
-        <div class="mr-3 text-center"><%= study.user.name %></div>
+        <img class="mr-3" style="border-radius: 100px;", src="<%= gravatar_url(@user, { size: 60 }) %>" alt="">
+        <div class="mr-3 text-center"><%= link_to study.user.name, user_path(study.user) %></div>
     </div>
     <div>
         <div class="mr-3" style='display: inline;'>学習言語：<%= study.language %></div>
@@ -10,7 +10,12 @@
         <div style='display: inline;'>投稿日時：<%= study.created_at %></div>
         <div>コメント</div>
         <div><%= study.content %></div>
+        <div style="display: flex;">
         <%= render 'favorites/like_button', studyrecord: study %>
+        <% if current_user == study.user %>
+            <%= link_to '削除', study, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-secondary btn-sm rounded-pill ml-3" %>
+        <% end %>
+        </div>
     </div>
 </div>
 <% end %>

@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @study = @user.studyrecords.order(id: :desc).page(params[:page])
+    @study = @user.studyrecords.order(id: :desc).page(params[:page]).per(10)
+    counts(@user)
   end
 
   def new
@@ -25,17 +26,20 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings.page(params[:page])
+    @followings = @user.followings.page(params[:page]).per(10)
+    counts(@user)
   end
   
   def followers
     @user = User.find(params[:id])
-    @followers = @user.followers.page(params[:page])
+    @followers = @user.followers.page(params[:page]).per(10)
+    counts(@user)
   end
   
   def goodlists
     @user = User.find(params[:id])
-    @goodlists = @user.fav_records.page(params[:page])
+    @goodlists = @user.fav_records.page(params[:page]).per(10)
+    counts(@user)
   end
   
   

@@ -1,9 +1,9 @@
 <% users.each do |user| %>
-<div class="mt-4" style="display: flex">
+<div class="mt-4" style="display: flex; border-bottom: 1px solid #D3D3D3;">
     <div>
         <ul class="list-unstyled">
-            <li><img class="rounded mr-3", src="<%= gravatar_url(user, { size: 75 }) %>" alt=""></li>
-            <li class="text-center mr-3"><%= user.name %></li>
+            <li><img class="mr-3" style="border-radius: 100px;"", src="<%= gravatar_url(user, { size: 60 }) %>" alt=""></li>
+            <li class="text-center mr-3"><%= link_to user.name, user_path(user) %></li>
         </ul>
     </div>
     <div>

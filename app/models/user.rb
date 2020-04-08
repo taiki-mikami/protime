@@ -13,8 +13,8 @@ class User < ApplicationRecord
     has_many :followers, through: :reverses_of_relationship, source: :user
     
     has_many :favorites
-    has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'studyrecord_id'
-    has_many :fav_records, through: :favorites, source: :studyrecord
+    has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'study_record_id'
+    has_many :fav_records, through: :favorites, source: :study_record
     has_many :reverses_of_fav_record, through: :reverses_of_favorite, source: :user
     
     def follow(other_user)
@@ -33,11 +33,11 @@ class User < ApplicationRecord
     end
     
     def like(record)
-        self.favorites.find_or_create_by(studyrecord_id: record.id)
+        self.favorites.find_or_create_by(study_record_id: record.id)
     end
     
     def unlike(record)
-        favorite = self.favorites.find_by(studyrecord_id: record.id)
+        favorite = self.favorites.find_by(study_record_id: record.id)
         favorite.destroy if favorite
     end
     
