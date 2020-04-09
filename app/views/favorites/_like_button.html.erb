@@ -3,11 +3,13 @@
     <%= form_with(model: current_user.favorites.find_by(study_record_id: studyrecord.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :study_record_id, studyrecord.id %>
         <%= f.submit 'いいね！解除', class: 'btn btn-sm btn-light rounded-pill' %>
+        <i class="far fa-thumbs-up"></i>×<%= studyrecord.favorites.count %>
     <% end %>
 <% else %>
     <%= form_with(model: current_user.favorites.build(study_record_id: studyrecord.id), local: true) do |f| %>
         <%= hidden_field_tag :study_record_id, studyrecord.id %>
         <%= f.submit 'いいね！', class: "btn btn-info btn-sm rounded-pill" %>
+        <i class="far fa-thumbs-up"></i>×<%= studyrecord.favorites.count %>
     <% end %>
 <% end %>
 <% end %>        
