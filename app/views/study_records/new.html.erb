@@ -1,12 +1,10 @@
-<header class="bg-dark mb-5" style="padding: 10px">
-    <h3 class="text-white ml-3"><a href="/" style="color: white; text-decoration: none;"><em>Protime</em></a></h3>
-</header>
+<%= render 'layouts/header' %>
 
 <div class="col-sm-6 offset-sm-3">
 <%= render 'layouts/flash_messages' %>
 </div>
 
-<h5 class="text-center mb-3"><strong>学習成果を記録</strong></h5>
+<h5 class="text-center mb-3">学習成果を記録</h5>
 
 <%= form_with(model: @study_record, local: true) do |f| %>
 
