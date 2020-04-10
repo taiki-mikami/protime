@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'users', to: 'users#new'
   get 'study_records', to: 'study_records#new'
+  get 'ranking', to: 'ranking#index'
+  
   resources :users, only: [:show, :new, :create] do
     member do
       get :followings

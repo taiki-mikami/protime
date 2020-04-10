@@ -23,6 +23,10 @@
         <%= f.text_area :content, class: 'form-control' %>
     </div>
     
+    <div class="col-sm-6 offset-sm-3">
+    <%= render 'layouts/error_messages', model: f.object %>
+    </div>
+    
     <div class="col-sm-6 offset-sm-3 mb-3">
         <%= f.submit '投稿する！', class: 'btn btn-primary btn-block rounded-pill' %>
     </div>
