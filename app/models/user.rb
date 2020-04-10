@@ -44,4 +44,12 @@ class User < ApplicationRecord
     def like?(record)
         self.fav_records.include?(record)
     end
+    
+    def studyrecords_followings
+        StudyRecord.where(user_id: self.following_ids)
+    end
+    
+    def studyrecords_followers
+        StudyRecord.where(user_id: self.follower_ids)
+    end
 end

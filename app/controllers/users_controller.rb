@@ -42,6 +42,14 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def following_studies
+    @study = current_user.studyrecords_followings.order(id: :desc).page(params[:page]).per(10)
+  end
+  
+  def follower_studies
+    @study = current_user.studyrecords_followers.order(id: :desc).page(params[:page]).per(10)
+  end
+  
   
   private
   

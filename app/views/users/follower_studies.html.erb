@@ -1,0 +1,13 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <%= render 'toppages/studies', studies: @study %>
+        </div>
+        
+        <div class="col-sm-4">
+            <%= render 'layouts/navbar', user: current_user %>
+        </div>
+    </div>
+</div>

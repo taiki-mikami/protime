@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :goodlists
+      get :following_studies
+      get :follower_studies
     end
   end
   
