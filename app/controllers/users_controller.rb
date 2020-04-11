@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, except: [:new, :create, :show]
+  before_action :require_user_signup, only: [:show]
   
   def index
   end

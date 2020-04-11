@@ -1,0 +1,39 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="mt-4 mb-5" style="display: flex;">
+                <div>
+                    <img class="mr-3" style="border-radius: 100px;", src="<%= gravatar_url(@study_record.user, { size: 60 }) %>" alt=""><br>
+                    <div class="text-center mr-3">
+                        <%= link_to @study_record.user.name, user_path(@study_record.user) %>
+                    </div>
+                </div>
+                <div style="margin: 0px;">
+                    <div class="mr-3" style='display: inline;'>学習言語：<%= @study_record.language %></div>
+                    <div class="mr-3" style='display: inline;'>学習時間：<%= @study_record.studytime %>分</div>
+                    <div style='display: inline;'>投稿日時：<%= @study_record.created_at.to_s(:datetime_jp) %></div><br>
+                    <div>コメント<br><%= @study_record.content %></div>
+                </div>
+            </div>
+            
+            <table class="table text-center" style="border-bottom: 1px solid #000000;">
+            <tr>
+                <th style="border-bottom: 1px solid #000000; border-top: 1px solid #000000;">「いいね！」したユーザ</th>
+                <th style="border-bottom: 1px solid #000000; border-top: 1px solid #000000;">「いいね！」した時刻</th>
+            </tr>
+            <% @favorites.each do |favorite| %>
+                <tr>
+                    <td><%= link_to favorite.user.name, user_path(favorite.user) %></td>
+                    <td><%= favorite.created_at.to_s(:datetime_jp) %></td>
+                </tr>
+            <% end %>
+            </table>
+    
+        </div>
+        <div class="col-sm-4">
+            <%= render 'layouts/navbar', user: current_user %>
+        </div>
+    </div>
+</div>

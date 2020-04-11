@@ -3,13 +3,17 @@
     <%= form_with(model: current_user.favorites.find_by(study_record_id: studyrecord.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :study_record_id, studyrecord.id %>
         <%= f.submit 'いいね！解除', class: 'btn btn-sm btn-light rounded-pill' %>
-        <%= studyrecord.favorites.count %>件の「いいね！」
+        <% if studyrecord.favorites.count >= 1 %>
+        <%= link_to studyrecord.favorites.count.to_s+'件の「いいね！」', study_record_path(studyrecord) %>
+        <% end %>
     <% end %>
 <% else %>
     <%= form_with(model: current_user.favorites.build(study_record_id: studyrecord.id), local: true) do |f| %>
         <%= hidden_field_tag :study_record_id, studyrecord.id %>
         <%= f.submit 'いいね！', class: "btn btn-info btn-sm rounded-pill" %>
-        <%= studyrecord.favorites.count %>件の「いいね！」
+        <% if studyrecord.favorites.count >= 1 %>
+        <%= link_to studyrecord.favorites.count.to_s+'件の「いいね！」', study_record_path(studyrecord) %>
+        <% end %>
     <% end %>
 <% end %>
 <% end %>        

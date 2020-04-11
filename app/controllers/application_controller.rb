@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
         end
     end
     
+    def require_user_signup
+        unless logged_in?
+            redirect_to '/signup'
+        end
+    end
+    
     def counts(user)
         @count_followings = user.followings.count
         @count_followers = user.followers.count

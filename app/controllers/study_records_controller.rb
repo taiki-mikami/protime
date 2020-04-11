@@ -2,6 +2,10 @@ class StudyRecordsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @study_record = StudyRecord.find(params[:id])
+    @favorites = @study_record.favorites.where(study_record_id: @study_record.id)
+  end
   
   def new
     if logged_in?
