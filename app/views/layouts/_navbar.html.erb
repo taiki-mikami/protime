@@ -8,7 +8,7 @@
         <tr><td>累計学習時間：<%= render 'users/studytime', user: current_user %></td></tr>
         <tr><td><a href="/">ホーム</a></td></tr>
         <tr><td><%= link_to 'ユーザ詳細', user_path(user) %></td></tr>
-        <tr><td><%= link_to 'フォローユーザの勉強記録', following_studies_user_path(user) %></td></tr>
+        <tr><td><%= link_to 'フォローの勉強記録', following_studies_user_path(user) %></td></tr>
         <tr><td><%= link_to 'フォロワーの勉強記録', follower_studies_user_path(user) %></td></tr>
         <tr><td><%= link_to 'ログアウト', logout_path, method: :delete %></td></tr>
         <tr><td></td></tr>

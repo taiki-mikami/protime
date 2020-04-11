@@ -1,5 +1,5 @@
 <% studies.each do |study| %>
-<div class="mb-4 pb-2" style="display: flex; border-bottom: 1px solid #D3D3D3;">
+<div class="mt-4" style="display: flex;">
     <div>
         <img class="mr-3" style="border-radius: 100px;", src="<%= gravatar_url(study.user, { size: 60 }) %>" alt=""><br>
         <div class="text-center mr-3">
@@ -10,11 +10,10 @@
         <div class="mr-3" style='display: inline;'>学習時間：<%= study.studytime %>分</div>
         <div style='display: inline;'>投稿日時：<%= study.created_at.to_s(:datetime_jp) %></div><br>
         <div>コメント<br><%= study.content %></div>
-        <div style="display: flex;">
-            <%= render 'favorites/like_button', studyrecord: study %>
-        </div>
     </div>
-    
-</div>            
+</div>
+<div class="pb-2" style="display: flex; border-bottom: 1px solid #D3D3D3; margin-left: 70px">
+    <%= render 'favorites/like_button', studyrecord: study %>
+</div>
 <% end %>
 <%= paginate @study %>
