@@ -3,13 +3,26 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
-            <% @study_records.each do |studyrecord| %>
-                    <ul>
-                        <li>
-                            <%= studyrecord.studytime %>
-                        </li>
-                </ul>
-            <% end %>
+            <table>
+                <tr>
+                    <th>順位</th>
+                    <th>ユーザ名</th>
+                    <th>累計学習時間</th>
+                </tr>
+                <% @ranking.each_with_index do |rank, i| %>
+                <tr>
+                    <td>
+                        <% unless @ranking[i-1].study_sum == @ranking[i].study_sum %>
+                            <%= i+1 %>
+                        <% else %>
+                            <%= i %>
+                        <% end %>
+                    </td>
+                    <td><%= User.find(rank.user_id).name %></td>
+                    <td><%= rank.study_sum %></td>
+                </tr>
+                <% end %>
+            </table>
         </div>
     </div>
 </div>
