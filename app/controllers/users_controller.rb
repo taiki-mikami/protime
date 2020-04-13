@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, except: [:new, :create, :show]
+  before_action :require_user_logged_in, except: [:new, :create, :show, :destroy]
   before_action :require_user_signup, only: [:show]
   
   def index
@@ -25,6 +25,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
+  end
+  
+  def destroy
+    current_user.destroy
+    flash[:success] = '退会しました。'
+    redirect_to root_url
   end
   
   def followings

@@ -11,6 +11,8 @@
                 <div class="dropdown-divider"></div>
                 <% if logged_in? %>
                 <a class="dropdown-item" href="/ranking">ランキング</a>
+                <div class="dropdown-divider"></div>
+                <%= link_to '退会する', current_user, method: :delete, data: { confirm: "一度退会するとデータの復元はできません。本当によろしいですか？" }, class: 'dropdown-item text-danger' %>
                 <% else %>
                 <a class="dropdown-item" href="/signup">ユーザ登録</a>
                 <% end %>
