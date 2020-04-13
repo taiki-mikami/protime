@@ -19,7 +19,9 @@
                 </ul>
                 <% unless @goodlists.empty? %>
                     <%= render 'studies', studies: @goodlists %>
+                    <div class="mt-3">
                     <%= paginate @goodlists %>
+                    </div>
                 <% else %>
                     <div class="text-center mt-3">まだ「いいね！」していません</div>
                 <% end %>

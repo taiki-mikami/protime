@@ -19,7 +19,9 @@
             </ul>
             <% unless @study.empty? %>
                 <%= render 'studies', studies: @study %>
+                <div class="mt-3">
                 <%= paginate @study %>
+                </div>
             <% else %>
                 <div class="text-center mt-3">まだ勉強記録がありません</div>
             <% end %>

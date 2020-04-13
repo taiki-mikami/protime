@@ -8,7 +8,12 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="/">ホーム</a>
+                <div class="dropdown-divider"></div>
+                <% if logged_in? %>
                 <a class="dropdown-item" href="/ranking">ランキング</a>
+                <% else %>
+                <a class="dropdown-item" href="/signup">ユーザ登録</a>
+                <% end %>
             </div>
         </li>
     </ul>

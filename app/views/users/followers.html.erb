@@ -19,7 +19,9 @@
             </ul>
             <% unless @followers.empty? %>
                 <%= render 'user', users: @followers %>
+                <div class="mt-3">
                 <%= paginate @followers %>
+                </div>
             <% else %>
                 <div class="text-center mt-3">まだフォロワーがいません</div>
             <% end %>

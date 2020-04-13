@@ -1,9 +1,14 @@
 <%= render 'layouts/header' %>
 
 <div class="container">
+    <h5>フォロワーの勉強記録一覧</h5>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8 mt-5">
+            <% unless @study.empty? %>
             <%= render 'toppages/studies', studies: @study %>
+            <% else %>
+            <div class="text-center mt-3">まだフォロワーの勉強記録がありません</div>
+            <% end %>
         </div>
         
         <div class="col-sm-4">

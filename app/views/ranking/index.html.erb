@@ -2,27 +2,45 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            <table>
+        <div class="col-sm-8">
+            <div class="ml-5 mb-5"><h5><em>ランキング</em></h5></div>
+            <table class="table table-hover" style="border-bottom: 1px solid #000000;">
                 <tr>
-                    <th>順位</th>
-                    <th>ユーザ名</th>
-                    <th>累計学習時間</th>
+                    <thead class="text-center">
+                        <th style="border-bottom: 1px solid #000000; border-top: 1px solid #000000;">順位</th>
+                        <th style="border-bottom: 1px solid #000000; border-top: 1px solid #000000;">ユーザ名</th>
+                        <th style="border-bottom: 1px solid #000000; border-top: 1px solid #000000;">累計学習時間</th>
+                    </thead>
                 </tr>
                 <% @ranking.each_with_index do |rank, i| %>
-                <tr>
+                <% if current_user.id == rank.user_id %>
+                <tr class="text-center table-info">
+                <% else %>
+                <tr class="text-center">
+                <% end %>
                     <td>
-                        <% unless @ranking[i-1].study_sum == @ranking[i].study_sum %>
-                            <%= i+1 %>
+                        <% if rank == @ranking.first %>
+                            <%= 1 %>
                         <% else %>
-                            <%= i %>
+                            <% unless @ranking[i-1].study_sum == @ranking[i].study_sum %>
+                                <%= i+1 %>
+                            <% else %>
+                                <%= i %>
+                            <% end %>
                         <% end %>
                     </td>
-                    <td><%= User.find(rank.user_id).name %></td>
-                    <td><%= rank.study_sum %></td>
+                    <% if current_user.id == rank.user_id %>
+                    <td><%= link_to User.find(rank.user_id).name, user_path(rank.user_id) %>（you）</td>
+                    <% else %>
+                    <td><%= link_to User.find(rank.user_id).name, user_path(rank.user_id) %></td>
+                    <% end %>
+                    <td><%= rank.study_sum.to_s + '分' %> (<%= (rank.study_sum/60).to_s + '時間' %>)</td>
                 </tr>
                 <% end %>
             </table>
+        </div>
+        <div class="col-sm-4">
+            <%= render 'layouts/navbar', user: current_user %>
         </div>
     </div>
 </div>
