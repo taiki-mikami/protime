@@ -3,13 +3,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
-            <img style="border-radius: 100px;", src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
-                <div class="mb-3">
-                    <%= @user.name %>
-                    <%= render 'relationships/follow_button', user: @user %>
+            <%= render 'layouts/flash_messages' %>
+            <%= render 'header', user: @user %>
+            <div style="display: flex;">
+                <div class="mr-auto">
+                    <p><%= @count_likes %>件「いいね！」しています</p>
+                    <p><%= @count_goods %>件「いいね！」されています</p>
                 </div>
-                <p><%= @count_likes %>件「いいね！」しています</p>
-                <p><%= @count_goods %>件「いいね！」されています</p>
+                <div>
+                    <% if @user.id == current_user.id %>
+                    <%= link_to 'プロフィールを編集する', edit_user_path, class: 'btn btn-primary btn-sm rounded-pill' %>
+                    <% end %>
+                </div>
+            </div>
                         
                 <ul class="nav nav-tabs nav-justified">
                     <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link">最近の勉強記録</a></li>

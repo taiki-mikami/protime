@@ -9,7 +9,7 @@
         <div class="mr-3" style='display: inline;'>学習言語：<%= study.language %></div>
         <div class="mr-3" style='display: inline;'>学習時間：<%= study.studytime %>分</div>
         <div style='display: inline;'>投稿日時：<%= study.created_at.to_s(:datetime_jp) %></div><br>
-        <div>コメント<br><%= study.content %></div>
+        <div>コメント<br><%=safe_join(study.content.split("\n"),tag(:br))%></div>
     </div>
 </div>
 <div class="pb-2" style="display: flex; border-bottom: 1px solid #D3D3D3; margin-left: 70px">

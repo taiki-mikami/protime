@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, except: [:new, :create, :show, :destroy]
+  before_action :require_user_logged_in, except: [:new, :create, :show]
   before_action :require_user_signup, only: [:show]
   
   def index
@@ -13,6 +13,22 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    @user.profile = params[:profile]
+    if @user.update(user_profile)
+      flash[:success] = 'プロフィールを更新しました。'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'プロフィールの更新に失敗しました。'
+      render :edit
+    end 
   end
 
   def create
@@ -64,5 +80,9 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def user_profile
+    params.require(:user).permit(:name, :profile)
   end
 end

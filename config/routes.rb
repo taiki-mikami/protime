@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'study_records', to: 'study_records#new'
   get 'ranking', to: 'ranking#index'
   
-  resources :users, only: [:show, :new, :create, :destroy] do
+  resources :users, only: [:show, :new, :create, :destroy, :update, :edit] do
     member do
       get :followings
       get :followers

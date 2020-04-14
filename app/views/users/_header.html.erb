@@ -1,0 +1,16 @@
+<div style="display: flex;">
+    <div>
+        <img style="border-radius: 100px;", src="<%= gravatar_url(user, { size: 100 }) %>" alt="">
+        <div class="mt-2 mb-3 text-center">
+            <%= user.name %>
+            <%= render 'relationships/follow_button', user: user %>
+        </div>
+    </div>
+    <div class="ml-5 mt-3">
+        <% if user.profile == nil %>
+        <div>まだプロフィールがありません</div>
+        <% else %>
+            <%=safe_join(user.profile.split("\n"),tag(:br))%>
+        <% end %>
+    </div>
+</div>
